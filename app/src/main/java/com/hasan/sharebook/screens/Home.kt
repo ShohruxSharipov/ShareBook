@@ -59,6 +59,11 @@ fun Home(navController: NavHostController) {
             var books  by remember {
                 mutableStateOf<List<Book>>(emptyList())
             }
+            val bookImages = mutableListOf(R.drawable.img,R.drawable.img_4, R.drawable.img_5, R.drawable.img_6)
+
+            val i = remember {
+                mutableStateOf(0)
+            }
             OutlinedTextField(
                 modifier = Modifier
                     .fillMaxWidth(),
@@ -131,13 +136,17 @@ fun Home(navController: NavHostController) {
                 columns = GridCells.Fixed(2)
             ) {
                 items(books) {
+
                     Column(modifier = Modifier.clickable {
                         navController.navigate("Book_info/${it.bookId}")
                     }, horizontalAlignment = Alignment.CenterHorizontally) {
                         Image(
-                            painter = painterResource(id = R.drawable.img),
+                            painter = painterResource(id = bookImages[i.value++]),
                             contentDescription = ""
                         )
+                        if (i.value >= 4){
+                            i.value = 0
+                        }
                         Text(text = it.name!!)
                         Text(
                             text = it.genre!!,
