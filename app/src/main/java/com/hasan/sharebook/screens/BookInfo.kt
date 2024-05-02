@@ -84,7 +84,7 @@ fun BookInfo(str: String) {
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Image(
-                    painter = painterResource(id = R.drawable.img),
+                    painter = painterResource(id = R.drawable.img_7),
                     contentDescription = "",
                     modifier = Modifier
                         .height(200.dp)
